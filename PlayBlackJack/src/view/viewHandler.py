@@ -36,17 +36,4 @@ class BlackjackMain(tk.Frame):
     def new_game(self):
         self.curGame = BlackjackController()
 
-        # Dealer Cards
-        self._dealerImages = list(map(lambda card: tk.PhotoImage(file=card.get_filename()),
-                                      self.curGame.get_dealers_hand()))
-        self._dealerLabels = list(map(lambda i: tk.Label(self.frame_dealer, image=i),
-                                      self._dealerImages))
-        for col in range(len(self._dealerLabels)):
-            self._dealerLabels[col].grid(row=0, column=col)
-
-        # Player Cards
-        self._playerImages = list(map(lambda card: tk.PhotoImage(file=card.get_filename()), self.curGame.get_players_hand()))
-        self._playerLabels = list(map(lambda i: tk.Label(self.frame_player, image=i), self._playerImages))
-        for col in range(len(self._playerLabels)):
-            self._playerLabels[col].grid(row=0, column=col)
 
