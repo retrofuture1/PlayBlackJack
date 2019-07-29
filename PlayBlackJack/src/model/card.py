@@ -1,22 +1,26 @@
 """File: card.py"""
-
+import os
 
 class Card:
     """This Class Card creates a card object with suit and rank"""
     SUITS = ('Spades', 'Hearts', 'Diamonds', 'Clubs')
     RANKS = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13)
-    BACK_OF_CARD_FILE_NAME = 'res/DECK/b.gif'
+    THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+    BACK_OF_CARD_FILE_NAME = os.path.join(THIS_FOLDER, 'DECK/b.gif')
+
 
     def __init__(self, rank, suit):
         """Creates a card with given rank and suit"""
 
         self.rank = rank
         self.suit = suit
-
         """The images for cards are saved in path res/DECK/
         For example: Ace of clubs is in res/DECK/1c.gif
         A number for rank, and a lower case initial for suits"""
-        self.filename = 'res/DECK/' + str(rank) + suit[0].lower() + '.gif'
+
+        self.filename = 'DECK/' + str(rank) + suit[0].lower() + '.gif'
+        self.my_file = os.path.join(Card.THIS_FOLDER, self.filename)
+
         self.faceUp = False
 
     def __str__(self):
@@ -36,7 +40,7 @@ class Card:
     def get_filename(self):
         """Only lets you get the file name if the card is face up"""
         if self.faceUp:
-            return self.filename
+            return self.my_file
         else:
             return Card.BACK_OF_CARD_FILE_NAME
 

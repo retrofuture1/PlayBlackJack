@@ -28,7 +28,7 @@ class BlackjackController(object):
         return card, self.currentPlayer.get_score()
 
     def hit_dealer(self):
-
+        """Dealer only hits after the player stands"""
         player_score = self.currentPlayer.get_score()
         self.currentDealer.show_first_card()
 
